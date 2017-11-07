@@ -39,9 +39,10 @@ public:
         {
             return 0;
         }
-        
+        char str_len_data[6];
+        CopyDataFromBuffer(str_len_data, 4);
         uint32_t uiCodeLength;
-        char* str = &szDataCodeBuffer[0];
+        char* str = &str_len_data[0];
         CCodeEngine::decode_int32(&str, &uiCodeLength);
         if (uiCodeLength <= 0)
         {

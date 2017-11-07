@@ -99,8 +99,11 @@ InternetAddress::InternetAddress(const std::string& szAddrStr, uint16_t port)
 
 void InternetAddress::updateAddressAndPort(const std::string& szAddrStr, uint16_t port)
 {
+#if AURORA_OS_WINDOWS == aurora_OS
     WSADATA wsaData;
     int n = WSAStartup(MAKEWORD(2, 2), &wsaData);
+#endif
+
     m_bValid = false;
     m_bIPv6 = false;
     char* addr = (char*)szAddrStr.c_str();
