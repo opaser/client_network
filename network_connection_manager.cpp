@@ -858,4 +858,13 @@ IUINT64 ConnectionManager::_iClock64()
     return ((IUINT64)s) * 1000 + (u / 1000);
 }
 
+void ConnectionManager::SetSignature(char *signature, int16_t signature_len)
+{
+    if (signature_len < 256)
+    {
+        memcpy(m_Signature, signature, signature_len);
+        m_signature_len = signature_len;
+    }
+}
+
 }
